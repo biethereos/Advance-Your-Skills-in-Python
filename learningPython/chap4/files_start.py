@@ -4,7 +4,7 @@
 
 def main():  
   # Open a file for writing and create it if it doesn't exist
-  # f = open('learningPython/chap4/textfile.txt', 'w+')
+  f = open('learningPython/chap4/textfile.txt', 'w+')
   
   # Open the file for appending text to the end
   f = open('learningPython/chap4/textfile.txt', 'a')
