@@ -3,6 +3,7 @@
 
 x = 5
 y = 3
-z = x + y
-
+z = x % y
+z = -z
+z = +z
 print(f'result is {z}')
