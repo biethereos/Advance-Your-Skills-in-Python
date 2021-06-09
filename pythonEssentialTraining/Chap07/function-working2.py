@@ -2,9 +2,11 @@
 # Copyright 2009-2017 BHG http://bw.org/
 
 def main():
-    kitten()
-
+    x = kitten()
+    print(type(x), x)
 def kitten():
     print('Meow.')
-
+    return dict(x = 4, y = 5, z = 6)
+    
+    
 if __name__ == '__main__': main()
