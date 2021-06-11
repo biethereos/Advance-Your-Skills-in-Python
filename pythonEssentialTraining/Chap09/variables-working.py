@@ -2,6 +2,7 @@
 # Copyright 2009-2017 BHG http://bw.org/
 
 class Animal:
+    # x = [1, 2, 3]
     def __init__(self, **kwargs):
         self._type = kwargs['type'] if 'type' in kwargs else 'kitten'
         self._name = kwargs['name'] if 'name' in kwargs else 'fluffy'
@@ -28,4 +29,10 @@ def main():
     print(a0)
     print(a1)
 
+    # a0._name = 'Joe'
+    # print(a1._name)
+    # print(a0.x)
+    # a1.x[0] = 7
+    # print(a0.x)
+    
 if __name__ == '__main__': main()
