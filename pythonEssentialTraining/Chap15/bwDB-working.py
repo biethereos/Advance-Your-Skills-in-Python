@@ -198,7 +198,10 @@ def test():
     recs = [
         dict(string='one', number=42),
         dict(string='two', number=73),
-        dict(string='three', number=123)
+        dict(string='three', number=123),
+        # dict(string='four', number=88),
+        # dict(string='five', number=99)
+        
     ]
 
     # -- for file-based database
