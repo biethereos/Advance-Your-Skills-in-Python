@@ -35,4 +35,6 @@ b2.setdiscount(0.25)
 print(b2.getprice())
 
 # TODO: properties with double underscores are hidden by the interpreter
+print(b2._discount)
+print(b2.__secret)
 print(b2._Book__secret)
