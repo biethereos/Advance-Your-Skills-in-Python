@@ -37,7 +37,26 @@ class Queue:
         return None
 
     def size(self):
-        pass
+        '''Returns the size of the Queue, which is represent by the length of
+        the list.
+        
+        The runtime is O(1), or constant time, because we're only returning the length. 
+        '''
+        return len(self.items)
 
     def is_empty(self):
-        pass
+        '''Returns the Boolean value expressing whether or not the list representing
+        the Queue is empty.
+        
+        Runs in constant time, because it's only checking for equality.
+        '''
+        return self.items == []
+    
+my_q = Queue()
+print(my_q.size())
+print(my_q.is_empty())
+my_q.enqueue('apple')
+my_q.enqueue('banana')
+print(my_q.items)
+print(my_q.size())
+print(my_q.is_empty())

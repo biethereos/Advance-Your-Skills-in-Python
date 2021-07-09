@@ -11,7 +11,7 @@ class PrintQueue:
     def dequeue(self):
         return self.items.pop()
 
-    def is_empty():
+    def is_empty(self):
         return self.items == []
 
 

@@ -25,10 +25,24 @@ class Queue:
         return None
 
     def peek(self):
-        pass
-
+        '''Returns the last item in the list. Which represents front-most item
+        in the Queue.
+        
+        The runtime is constant because we're just indexing to last item of
+        the list and returning value found here.
+        '''
+        if self.items:
+            return self.items[-1]
+        return None
     def size(self):
         pass
 
     def is_empty(self):
         pass
+    
+my_q = Queue()
+my_q.peek()
+my_q.enqueue('apple')
+my_q.enqueue('banana')
+print(my_q.items)
+print(my_q.peek())
