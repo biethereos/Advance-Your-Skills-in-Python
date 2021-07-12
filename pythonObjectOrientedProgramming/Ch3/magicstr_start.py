@@ -19,8 +19,9 @@ class Book:
 
 b1 = Book("War and Peace", "Leo Tolstoy", 39.95)
 b2 = Book("The Catcher in the Rye", "JD Salinger", 29.95)
-
+# print each object
 print(b1)
 print(b2)
+# use str() and repr()
 print(str(b1))
 print(repr(b2))
