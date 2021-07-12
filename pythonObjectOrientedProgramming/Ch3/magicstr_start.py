@@ -14,7 +14,7 @@ class Book:
         return f'{self.title} by {self.author} costs {self.price}'
     
     # TODO: use the __repr__ method to return an obj representation
-    def __repr__(self) -> str:
+    def __repr__(self):
         return f'title = {self.title}, author = {self.author}, price = {self.price}'
 
 b1 = Book("War and Peace", "Leo Tolstoy", 39.95)
