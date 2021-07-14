@@ -26,35 +26,6 @@ class SLLNode:
         self.next = new_next
 
 
-
-class SLLNode:
-
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-
-    def __repr__(self):
-        return "SLLNode object: data={}".format(self.data)
-
-    def get_data(self):
-        """Return the self.data attribute."""
-        return self.data
-
-    def set_data(self, new_data):
-        """Replace the existing value of the self.data attribute with new_data
-        parameter."""
-        self.data = new_data
-
-    def get_next(self):
-        """Return the self.next attribute"""
-        return self.next
-
-    def set_next(self, new_next):
-        """Replace the existing value of the self.next attribute with new_next
-        parameter."""
-        self.next = new_next
-
-
 class SLL:
 
     def __init__(self):
@@ -93,7 +64,32 @@ class SLL:
         return size
 
     def search(self, data):
-        pass
+        '''Traverses the Linked List and returns True if the data searched for
+        is present in one of the Nodes. Otherwise, it returns False.
+
+        The time complexity is O(n) because in the worst case, we have to visit
+        every Node in the list.'''
+        if self.head is None:
+            return 'Linked List is empty. No node is search.'
+        
+        current = self.head
+        while current is not None:
+            # the Node's data matches what we're looking for
+            if current.get_data() == data:
+                return True
+            # the Node's data doesn't matches
+            else:
+                current = current.get_next() 
+                
+        return False
 
     def remove(self, data):
         pass
+
+sll = SLL()
+print(sll.search(3))
+sll.add_front(1)
+sll.add_front(2)
+sll.add_front(3)
+print(sll.search('bird'))
+print(sll.search(2))
