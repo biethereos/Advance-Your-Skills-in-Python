@@ -26,35 +26,6 @@ class SLLNode:
         self.next = new_next
 
 
-
-class SLLNode:
-
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-
-    def __repr__(self):
-        return "SLLNode object: data={}".format(self.data)
-
-    def get_data(self):
-        """Return the self.data attribute."""
-        return self.data
-
-    def set_data(self, new_data):
-        """Replace the existing value of the self.data attribute with new_data
-        parameter."""
-        self.data = new_data
-
-    def get_next(self):
-        """Return the self.next attribute"""
-        return self.next
-
-    def set_next(self, new_next):
-        """Replace the existing value of the self.next attribute with new_next
-        parameter."""
-        self.next = new_next
-
-
 class SLL:
 
     def __init__(self):
@@ -112,4 +83,28 @@ class SLL:
         return False
 
     def remove(self, data):
-        pass
+        '''Removes the first occurence of a Node that contains the data argument
+        as its self.data variable. Returns nothing.
+
+        The time complexity is O(n) because in the worst case we have to visit
+        every Node before we find the one we need to remove.'''
+        if self.head is None:
+            return 'Linked List is empty. No Nodes to remove'
+        
+        current = self.head
+        previous = None
+        found = False
+        while not found:
+            if current.get_data() == data:
+                found = True
+            else:
+                if current.get_next() == None:
+                    return 'A Node with that data value is not present.'
+                else:
+                    previous = current
+                    current = current.get_next()
+
+        if previous is None:
+            self.head = current.get_next()
+        else:
+            previous.set_next(current.get_next())
