@@ -85,7 +85,29 @@ class DLL:
         return False
 
     def add_front(self, new_data):
-        pass
+        '''Add a Node whose data is the new_data argument to the front of the
+        Linked List.'''
+        temp = DLLNode(new_data)
+        temp.set_next(self.head)
+        
+        if self.head is not None:
+            self.head.set_previous(temp)
+        
+        self.head = temp
 
     def remove(self, data):
         pass
+
+dll = DLL()
+print(dll.size())
+dll.add_front(1)
+print(dll.head)
+print(dll.size())
+print(dll.head.next)
+print(dll.head.previous)
+dll.add_front(2)
+print(dll.head)
+print(dll.size())
+print(dll.head.previous)
+print(dll.head.next)
+print(dll.head.next.next)

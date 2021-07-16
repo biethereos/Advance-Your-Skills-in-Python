@@ -48,10 +48,40 @@ class DLL:
         return self.head is None
 
     def size(self):
-        pass
+        '''Traverses the Linked List and returns an integer value representing
+        the number of nodes in the Linked List.
+
+        The time complexity is O(n) because every Node in the Linked List must
+        be visited in order to calculate the size of the Linked List.'''
+        size = 0
+        if self.head is None:
+            return 0
+        
+        current = self.head
+        
+        while current is not None: # While there are still Nodes left to count
+            size += 1
+            current = current.get_next()
+            
+        return size    
 
     def search(self, data):
-        pass
+        '''Traverses the Linked List and returns True if the data searched for
+        is present in one of the Nodes. Otherwise, it returns False.
+
+        The time complexity is O(n) because in the worst case, we have to visit
+        every Node in the list.'''
+        if self.head is None:
+            return 'Linked List is empty. No Nodes to search.'
+        
+        current = self.head
+        while current is not None:
+            if current.get_data() == data:
+                return True
+            else:
+                current = current.get_next()
+        
+        return False
 
     def add_front(self, data):
         pass

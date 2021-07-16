@@ -34,3 +34,26 @@ class DLLNode:
         """Replace the existing value of the self.previous attribute with
         new_previous parameter."""
         self.previous = new_previous
+        
+
+class DLL:
+    def __init__(self):
+        self.head = None
+
+    def __repr__(self) -> str:
+        return f'<DLL object: head={self.head}>'
+    
+    def is_empty(self):
+        return self.head is None
+    
+    def size(self):
+        pass
+    
+    def search(self, data):
+        pass
+    
+    def add_front(self, data):
+        pass
+    
+    def remove(self, data):
+        pass
