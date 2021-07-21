@@ -32,7 +32,7 @@ class SLL:
         self.head = None
 
     def __repr__(self):
-        return "SLL object: head={}".format(self.head)
+        return "SLL object: head = {}".format(self.head)
 
     def is_empty(self):
         """Returns True if the Linked List is empty. Otherwise, returns False."""
@@ -99,7 +99,7 @@ class SLL:
             if current.get_data() == data:
                 found = True
             else:
-                if current.get_next() == None:
+                if current.get_next() is None:
                     return "A Node with that data value is not present."
                 else:
                     previous = current
@@ -110,15 +110,15 @@ class SLL:
         else:
             previous.set_next(current.get_next())
 
-ssl = SLL()
-print(ssl.remove(15))
-ssl.add_front(27)
-print(ssl.remove(15))
-ssl.remove(27)
-print(ssl.head)
-ssl.add_front('apple')
-ssl.add_front('berry')
-ssl.add_front('cherry')
-ssl.remove('berry')
-print(ssl.head)
-print(ssl.head.next)
+sll = SLL()
+print(sll.remove(15))
+sll.add_front(27)
+print(sll.remove(15))
+sll.remove(27)
+print(sll.head)
+sll.add_front('apple')
+sll.add_front('berry')
+sll.add_front('cherry')
+sll.remove('berry')
+print(sll.head)
+print(sll.head.next)
