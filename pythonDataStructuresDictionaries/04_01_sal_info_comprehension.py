@@ -9,9 +9,10 @@ for key, value in zip(sal_data_keys,sal_data_values):
 print (sal_info)
 #sal_info.clear()
 
+print("#### Creating a dictionary using comprehension")
 #Using Dictionary Comprehension to popultate the dictionary
-
-
+sal_info = {sal_data_keys[i]: sal_data_values[i] for i in range(len(sal_data_keys))}
+print(sal_info)
 
 
 
