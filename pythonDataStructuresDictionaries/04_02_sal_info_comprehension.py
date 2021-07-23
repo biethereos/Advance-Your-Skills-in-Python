@@ -6,7 +6,7 @@ sal_info = {}
 print("#### Creating a dictionary without using comprehension")
 for key, value in zip(sal_data_keys,sal_data_values):
 	sal_info[key] = value
-print (sal_info)
+print(sal_info)
 #sal_info.clear()
 
 
@@ -17,9 +17,11 @@ for k in sal_info:
  if sal_info[k] > 100000:
   sal_100k[k] = sal_info[k]
 
-print (sal_100k)
-#sal_100k.clear()
+print(sal_100k)
+sal_100k.clear()
 
 
 
 #filtering through the dictionary using comprehension
+sal_100k = {k : v for k, v in sal_info.items() if v > 100000}
+print(sal_100k)

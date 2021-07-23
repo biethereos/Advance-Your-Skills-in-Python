@@ -14,9 +14,9 @@ with open('TreeOrdersSubset.csv', mode='r') as infile:
             treeOrders[key] = int(treeNum)
 
         else:
-            treeNum= row[1]
+            treeNum = row[1]
             prev_count = treeOrders[key]
-            treeOrders[key]= int (prev_count) + int (treeNum)
+            treeOrders[key] = int (prev_count) + int (treeNum)
 
 infile.close()
 print ("length of dictionary ",len(treeOrders))
