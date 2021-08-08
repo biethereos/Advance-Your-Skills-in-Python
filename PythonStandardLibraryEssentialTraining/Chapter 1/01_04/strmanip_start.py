@@ -7,7 +7,8 @@ print(test_string1.upper())
 print(test_string1.lower())
 
 # TODO: Use the split and join functions
-
+result = test_string1.split(' ')
+print(result)
 
 # TODO: use justification functions to align strings
 # ljust, center, rjust
