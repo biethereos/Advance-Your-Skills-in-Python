@@ -196,9 +196,10 @@ def test():
     t = 'foo'
 
     recs = [
-        dict(string='one', number=42),
-        dict(string='two', number=73),
-        dict(string='three', number=123),
+        dict(string='one', number=42, city='USA'),
+        dict(string='two', number=73, city ='Finland'),
+        dict(string='three', number=123, city='Poland'),
+        {'string': 'extra', 'number': 513, 'city': 'VietNam'}
         # dict(string='four', number=88),
         # dict(string='five', number=99)
         
@@ -219,7 +220,7 @@ def test():
 
     print('Create table ... ', end='')
     db.sql_do(f' DROP TABLE IF EXISTS {t} ')
-    db.sql_do(f' CREATE TABLE {t} ( id INTEGER PRIMARY KEY, string TEXT, number INTEGER ) ')
+    db.sql_do(f' CREATE TABLE {t} ( id INTEGER PRIMARY KEY, string TEXT, number INTEGER, city TEXT ) ')
     print('Done.')
 
     print('Insert into table ... ', end='')
@@ -238,7 +239,7 @@ def test():
     print(dict(db.getrec(2)))
 
     print('Insert an extra row ... ', end='')
-    newid = db.insert({'string': 'extra', 'number': 512})
+    newid = db.insert({'string': 'extra', 'number': 512, 'city': 'Lao'})
     print(f'(id is {newid})')
     print(dict(db.getrec(newid)))
     print(f'There are {db.countrecs()} rows')
