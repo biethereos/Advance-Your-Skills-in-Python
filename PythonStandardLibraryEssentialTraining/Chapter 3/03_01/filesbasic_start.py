@@ -3,11 +3,18 @@
 
 # TODO: open a file for writing data
 # "w" means write, "r" means read, "a" means append, "r+" means read and write
-fp = open('PythonStandardLibraryEssentialTraining/Chapter 3/03_01/testfile.txt', 'w')
-fp.write('This is sometext\n')
-fp.close()
+# fp = open('PythonStandardLibraryEssentialTraining/Chapter 3/03_01/testfile.txt', 'w')
+# fp.write('This is sometext\n')
+# fp.close()
 
 # TODO: read a file's data
-
+# with open('PythonStandardLibraryEssentialTraining/Chapter 3/03_01/testfile.txt', 'r') as fp:
+#     data = fp.read()
+#     print(data)
 
 # TODO: Add data to an existing file
+with open('PythonStandardLibraryEssentialTraining/Chapter 3/03_01/testfile.txt', 'a+') as fp:
+    fp.write('This is data added on the file.')
+    fp.seek(0)
+    data = fp.read()
+    print(data)
