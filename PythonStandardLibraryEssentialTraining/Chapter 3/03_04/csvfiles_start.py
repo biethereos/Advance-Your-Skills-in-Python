@@ -28,7 +28,7 @@ def useSniffer():
 
 # TODO: Write data to a CSV file
 def writerSample():
-    with open('PythonStandardLibraryEssentialTraining/Chapter 3/03_04/SampleData.csv', mode='w') as csvfile:
+    with open('SampleData.csv', mode='w') as csvfile:
         csvwriter = csv.writer(csvfile)
         csvwriter.writerow(['Name', 'Department', 'Location'])
         csvwriter.writerow(['John Doe', 'Accounting', 'San Francisco'])
