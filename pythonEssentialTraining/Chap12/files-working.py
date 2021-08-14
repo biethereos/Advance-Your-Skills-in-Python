@@ -2,7 +2,7 @@
 # Copyright 2009-2017 BHG http://bw.org/
 
 def main():
-    f = open('pythonEssentialTraining/Chap12/lines.txt', 'r')
+    f = open('lines.txt', 'r')
     for line in f:
         print(line.rstrip())
 

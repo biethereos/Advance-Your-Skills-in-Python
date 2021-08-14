@@ -2,8 +2,8 @@
 # Copyright 2009-2017 BHG http://bw.org/
 
 def main():
-    infile = open('pythonEssentialTraining/Chap12/lines.txt', 'rt')
-    outfile = open('pythonEssentialTraining/Chap12/lines-copy.txt', 'wt')
+    infile = open('lines.txt', 'rt')
+    outfile = open('lines-copy.txt', 'wt')
     for line in infile:
         print(line.rstrip(), file=outfile)
         # outfile.writelines(line)
