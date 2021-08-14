@@ -6,8 +6,6 @@ import csv
 print(csv.list_dialects())
 
 # TODO: Open a CSV file and read each row of data
-
-
 def readerSample():
     with open('StockQuotes.csv') as csvfile:
         reader = csv.reader(csvfile)
@@ -41,5 +39,5 @@ def writerSample():
 
 # Exercise the samples
 # readerSample()
-# writerSample()
+writerSample()
 # useSniffer()
