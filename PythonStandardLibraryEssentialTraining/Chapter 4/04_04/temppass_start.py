@@ -19,7 +19,7 @@ def generateBetterPass(numChars=8):
         
     return result
 # create a temporary password
-# print(generateTempPass(10))
+print(generateTempPass(10))
 
 # create a stronger temporary password
 print(generateBetterPass(10))
