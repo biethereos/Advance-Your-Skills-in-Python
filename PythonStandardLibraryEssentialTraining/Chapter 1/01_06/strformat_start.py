@@ -4,15 +4,15 @@ import datetime
 
 # TODO: Using Template strings
 the_str = "The quick brown $animal $action over the lazy dog"
-# the_template = Template(the_str)
-# output_str = the_template.substitute(animal="fox",action="jumped")
-# print(output_str)
-# args = {
-#     "animal":"cow",
-#     "action":"walked"
-# }
-# output_str = the_template.substitute(args)
-# print(output_str)
+the_template = Template(the_str)
+output_str = the_template.substitute(animal="fox",action="jumped")
+print(output_str)
+args = {
+    "animal":"cow",
+    "action":"walked"
+}
+output_str = the_template.substitute(args)
+print(output_str)
 
 # TODO: Using str.format()
 foo = "foo"

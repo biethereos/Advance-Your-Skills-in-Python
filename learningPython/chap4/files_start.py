@@ -20,10 +20,11 @@ def main():
   # Open the file back up and read the contents
   if f.mode == 'r':
     contents = f.read()
-    fl = f.readlines()
-    for x in fl:
-      print(x)
     print(contents)
+    
+    # fl = f.readlines()
+    # for x in fl:
+    #   print(x)
     
 if __name__ == "__main__":
   main()
