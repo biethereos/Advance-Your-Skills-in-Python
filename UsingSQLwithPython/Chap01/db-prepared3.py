@@ -2,21 +2,21 @@
 # Copyright 2021 Hung Nguyen
 # as of 2021-09-29
 
-import mysql.connector as mysql
+import psycopg2 as pg
 
 MY_HOST = 'localhost'
-MY_USER = 'root'
-MY_PASS = 'av.nt@$*19b$*'
+MY_USER = 'postgres'
+MY_PASS = '*********'
 MY_DATABASE = 'test'
 
 
 def main():
-    db = mysql.connect(host=MY_HOST, 
-                        user=MY_USER, 
-                        password=MY_PASS, 
-                        database=MY_DATABASE)
+    db = pg.connect(host=MY_HOST,
+                    user=MY_USER,
+                    password=MY_PASS,
+                    database=MY_DATABASE)
 
-    cur = db.cursor(prepared=True)
+    cur = db.cursor()
 
     cur.execute('DROP TABLE IF EXISTS temp')
     cur.execute('CREATE TABLE IF NOT EXISTS temp (a TEXT, b TEXT, c TEXT)')
@@ -36,14 +36,14 @@ def main():
         ('nine', 'ten', 'eleven')
     )
 
-    insert_statment = 'INSERT INTO temp VALUES (?, ?, ?)'
+    insert_statment = 'INSERT INTO temp VALUES (%s, %s, %s)'
     cur.executemany(insert_statment, values)
 
     cur.execute('SELECT * FROM temp')
     for row in cur:
         print(row)
 
-    query = 'SELECT * FROM temp WHERE a = ?'
+    query = 'SELECT * FROM temp WHERE a = %s'
     cur.execute(query, ('four',))
 
     for row in cur:
@@ -54,5 +54,6 @@ def main():
     cur.close()
     db.close()
 
-if __name__== '__main__':
+
+if __name__ == '__main__':
     main()

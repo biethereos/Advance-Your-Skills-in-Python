@@ -1,49 +1,50 @@
-#!/usr/bin/env python3
-# Copyright 2021 BHG [bw.org]
-# as of 2021-04-07 bw
+from mysql.connector.errors import Error
+import psycopg2 as pg
 
-import sqlite3
+MY_HOST = 'localhost'
+MY_USER = 'postgres'
+MY_PASS = '***********'
+MY_DATABASE = 'test'
 
 
 def main():
-    print("SQLite starting ..... ....... .....")
-    
-    db = None   # satisfy the warnings monster
+    print('Postgreslq start ... ... ... ... ... ...')
+    db = None # satisfy the warnings monster
     cur = None
-
     try:
-        # using SQLite's transient in-memory database
-        db = sqlite3.connect(":memory:")
+        db = pg.connect(
+            host=MY_HOST, 
+            user=MY_USER, 
+            password=MY_PASS,
+            database=MY_DATABASE)
         cur = db.cursor()
-        print("connected")
-
-    except sqlite3.Error as e:
-        print(f"could not open database: {e}")
+        print('connected')
+    except pg.Error as err:
+        print(f'could not connect Postgreslq {err}')
         exit(1)
 
     try:
+        cur.execute('DROP TABLE IF EXISTS person')
         # create a table
         sql_create = '''
-            CREATE TABLE IF NOT EXISTS person (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                first_name TEXT NOT NULL,
-                last_name TEXT NOT NULL,
-                email TEXT,
-                gender TEXT NOT NULL,
-                date_of_birth TEXT NOT NULL,
-                country_of_birth TEXT NOT NULL
-            ) 
+            CREATE TABLE IF NOT EXISTS person(
+                id BIGSERIAL NOT NULL PRIMARY KEY,
+                first_name VARCHAR(50) NOT NULL,
+                last_name VARCHAR(50) NOT NULL,
+                email VARCHAR(150),
+                gender VARCHAR(15) NOT NULL,
+                date_of_birth DATE NOT NULL,
+                country_of_birth VARCHAR(50) NOT NULL
+            )
         '''
         cur.execute(sql_create)
-        print("table created")
-
-    except sqlite3.Error as e:
-        print(f"could not create table: {e}")
+        print('table created')
+    except pg.Error as err:
+        print(f'Could not create table {err}')
         exit(1)
 
     try:
-        # insert rows into the table using executemany
-        print("inserting rows")
+        # insert row into the table using executemany
         row_data = (
             ('Orly', 'Conneau', None, 'Female', '2021-04-09', 'Gabon'),
             ('Jillie', 'Weighell', None, 'Genderfluid', '2021-01-19', 'Bosnia and Herzegovina'),
@@ -97,67 +98,20 @@ def main():
             ('Gillan', 'Barthelme', 'gbarthelme1e@sohu.com', 'Polygender', '2020-11-20', 'China'),
             ('Aridatha', 'Colecrough', 'acolecrough1f@earthlink.net', 'Genderfluid', '2021-02-28', 'Poland')
         )
-        cur.executemany("INSERT INTO person (first_name, last_name, email, gender, date_of_birth, country_of_birth) VALUES (?, ?, ?, ?, ?, ?)", row_data)
+        print('inserting rows')
+        cur.executemany('INSERT INTO person(first_name, last_name, email, gender, date_of_birth, country_of_birth) VALUES(%s, %s, %s, %s, %s, %s)', row_data)
         count = cur.rowcount
-        # cur.executemany("INSERT INTO person (first_name, last_name, email, gender, date_of_birth, country_of_birth) VALUES (?, ?, ?, ?, ?, ?)", row_data)
+        # cur.executemany('INSERT INTO person(first_name, last_name, email, gender, date_of_birth, country_of_birth) VALUES(%s, %s, %s, %s, %s, %s)', row_data)
         # count += cur.rowcount
-        # cur.executemany("INSERT INTO person (first_name, last_name, email, gender, date_of_birth, country_of_birth) VALUES (?, ?, ?, ?, ?, ?)", row_data)
+        # cur.executemany('INSERT INTO person(first_name, last_name, email, gender, date_of_birth, country_of_birth) VALUES(%s, %s, %s, %s, %s, %s)', row_data)
         # count += cur.rowcount
-        print(f"{count} rows added")
+        print(f'{count} rows added')
         db.commit()
-
-    except sqlite3.Error as e:
-        print(f"could not insert rows: {e}")
-        exit(1)
-
-    try:
-        # count rows using SELECT COUNT(*)
-        cur.execute("SELECT COUNT(*) FROM person")
-        count = cur.fetchone()[0]
-        print(f"there are {count} rows in the table")
-
-        # get column names from SQLite meta-data table_info
-        cur.execute("PRAGMA table_info(person);")
-        row = cur.fetchall()
-        colnames = [r[1] for r in row]
-        print(f"column names are: {colnames}")
-
-        # fetch rows using iterator
-        print('\nusing iterator')
-        cur.execute("SELECT * FROM person LIMIT 5")
-        for row in cur:
-            print(row)
-
-        # fetch rows using row_factory
-        print('\nusing row_factory')
-        cur.execute("SELECT * FROM person LIMIT 5")
-        cur.row_factory = sqlite3.Row
-        print(cur.row_factory)
-        for row in cur:
-            print(f"as tuple: {tuple(row)}, as dict: id:{row['id']} first_name:{row['first_name']}, last_name:{row['last_name']}, email:{row['email']}")
-
-        cur.row_factory = None  # reset row factory
-
-        # fetch rows in groups of 5 using fetchmany
-        print('\ngroups of 5 using fetchmany')
-        cur.execute("SELECT * FROM person")
-        rows = cur.fetchmany(5)
-        while rows:
-            for r in rows:
-                print(r)
-            print("====== ====== ======")
-            rows = cur.fetchmany(5)
-
-        # drop table and close the database
-        print('\ndrop table and close connection')
-        cur.execute("DROP TABLE IF EXISTS person")  # cleanup if db is not :memory:
-        cur.close()
-        db.close()
-
-    except sqlite3.Error as e:
-        print(f"sqlite3 error: {e}")
+    except pg.Error as err:
+        print(f'could not add rows: {err}')
         exit(1)
 
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     main()

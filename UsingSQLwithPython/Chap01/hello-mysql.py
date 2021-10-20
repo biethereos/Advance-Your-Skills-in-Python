@@ -5,18 +5,22 @@
 import mysql.connector as mysql
 
 
-MY_HOST = 'pluto.local'
-MY_USER = 'appuser'
-MY_PASS = 'Spartacus'
+MY_HOST = 'localhost'
+MY_USER = 'root'
+MY_PASS = '**********'
 
 
 def main():
-    print("MySQL example")
+    print("MySQL start ... ... ... ... ... ... ...")
     db = None   # satisfy the warnings monster
     cur = None
 
     try:
-        db = mysql.connect(host=MY_HOST, user=MY_USER, password=MY_PASS, database='scratch')
+        db = mysql.connect(
+            host=MY_HOST, 
+            user=MY_USER, 
+            password=MY_PASS, 
+            database='test')
         cur = db.cursor(prepared=True)
         print("connected")
 

@@ -7,7 +7,7 @@ import mysql.connector as mysql
 
 MY_HOST = 'localhost'
 MY_USER = 'root'
-MY_PASS = 'av.nt@$*19b$*'
+MY_PASS = '*********'
 
 
 def main():

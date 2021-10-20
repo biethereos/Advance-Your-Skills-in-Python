@@ -5,7 +5,7 @@
 import mysql.connector as mysql
 
 def main():
-    db = mysql.connect(host='localhost', user='root', password='av.nt@$*19b$*')    
+    db = mysql.connect(host='localhost', user='root', password='*********')    
     cur = db.cursor()
 
     cur.execute('SELECT VERSION()')

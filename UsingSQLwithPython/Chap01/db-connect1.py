@@ -5,7 +5,7 @@
 import psycopg2 as pg
 
 def main():
-    db = pg.connect(host='localhost', user='postgres', password='@#$234%#nt')
+    db = pg.connect(host='localhost', user='postgres', password='*******')
     cur = db.cursor()
 
     cur.execute('SELECT version()')
